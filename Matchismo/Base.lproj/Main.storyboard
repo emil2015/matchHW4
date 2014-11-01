@@ -1,9 +1,54 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="J4T-HA-QWy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="J4T-HA-QWy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="o7h-sW-QLb">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="WEQ-aQ-5FQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="GWf-cb-NPP"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Odn-J8-eKc">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ibw-gP-zem" kind="relationship" relationship="rootViewController" id="alO-kW-s8V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YYz-X2-0Bh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1576" y="-1165"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="l3h-nc-lQU">
+            <objects>
+                <viewController id="ibw-gP-zem" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Wt-Mo-Kby"/>
+                        <viewControllerLayoutGuide type="bottom" id="0tn-oz-G8b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HwR-03-UyO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6K8-Eg-lEy" customClass="SetCardView">
+                                <rect key="frame" x="20" y="73" width="77" height="69"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZYc-SB-jtW"/>
+                    <connections>
+                        <outlet property="dsdd" destination="6K8-Eg-lEy" id="HFK-Pk-veQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lfd-I5-DQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1105" y="-1174"/>
+        </scene>
         <!--Playing Card View Controller - Playing Cards-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -871,6 +916,7 @@
                     <connections>
                         <segue destination="upZ-Ae-Uuf" kind="relationship" relationship="viewControllers" id="Ule-Ey-fiY"/>
                         <segue destination="Eji-xX-5pI" kind="relationship" relationship="viewControllers" id="HIO-p2-44r"/>
+                        <segue destination="WEQ-aQ-5FQ" kind="relationship" relationship="viewControllers" id="YL6-Am-nbf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jKq-bY-IIZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
