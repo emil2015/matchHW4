@@ -15,8 +15,8 @@
 
 - (void)tap:(UIGestureRecognizer *)tap{
     NSLog(@"Tapped was tapped %d", self.tag);
-    ViewController *meh = self.superview;
-    [meh hereIsTheCard:1];
+    //ViewController *meh = self.superview;
+    //[meh hereIsTheCard:1];
 }
 
 /*
