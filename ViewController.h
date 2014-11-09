@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MatchCardsViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : MatchCardsViewController
+
+//Something like this
+- (void)tap:(UIGestureRecognizer *)gesture;
 
 @end

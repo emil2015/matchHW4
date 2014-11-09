@@ -20,5 +20,6 @@
 + (NSArray *)validColors;
 + (NSUInteger)maxCount;
 
+@property NSUInteger cardIndexForView;
 
 @end

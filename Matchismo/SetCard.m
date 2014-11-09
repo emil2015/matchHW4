@@ -303,7 +303,7 @@
 
 + (NSArray *)validColors
 {
-    return @[[UIColor greenColor], [UIColor blueColor], [UIColor redColor]];
+    return @[[UIColor greenColor], [UIColor purpleColor], [UIColor redColor]];
 }
 
 - (void)setCount:(NSUInteger)count

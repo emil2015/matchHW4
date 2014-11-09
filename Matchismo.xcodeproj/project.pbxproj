@@ -129,6 +129,7 @@
 		508EF85718E362D900F5F763 = {
 			isa = PBXGroup;
 			children = (
+				508EF87518E362D900F5F763 /* Main.storyboard */,
 				2025F1D11A055BE20034A77D /* DrawnSetCardGame */,
 				508EF86918E362D900F5F763 /* Matchismo */,
 				508EF88818E362DA00F5F763 /* MatchismoTests */,
@@ -160,7 +161,6 @@
 		508EF86918E362D900F5F763 /* Matchismo */ = {
 			isa = PBXGroup;
 			children = (
-				508EF87518E362D900F5F763 /* Main.storyboard */,
 				508EF87818E362D900F5F763 /* MatchCardsViewController.h */,
 				508EF87918E362D900F5F763 /* MatchCardsViewController.m */,
 				50C2E8FD19DCB83700A0F35E /* PlayingCardViewController.h */,
@@ -380,6 +380,7 @@
 				508EF87618E362D900F5F763 /* Base */,
 			);
 			name = Main.storyboard;
+			path = Matchismo;
 			sourceTree = "<group>";
 		};
 		508EF88B18E362DA00F5F763 /* InfoPlist.strings */ = {
