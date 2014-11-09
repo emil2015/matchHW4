@@ -22,4 +22,6 @@
 
 @property NSUInteger cardIndexForView;
 
+@property BOOL isChosen;
+
 @end

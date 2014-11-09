@@ -89,6 +89,7 @@
         [meh addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:meh action:@selector(tap:)]];
     }
     
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -114,6 +115,8 @@
     // this is a 3 card matching game
     [self.game matchThreeCards];
 }
+
+/*
 //TODO This is calling the deal button, I need it to call the updateUI method? This has been linked to the actual card views.
 - (IBAction)tap:(UITapGestureRecognizer *)sender
 {
@@ -134,6 +137,11 @@
     [self updateUI];
     NSLog(@"View TOuched");
     
+}
+*/
+
+- (void)hereIsTheCard:(NSInteger)para{
+    NSLog(@"Here's the card");
 }
 
 
@@ -164,6 +172,7 @@
         
         setViews.cardIndexForView = cardIndex;
         setViews.tag = cardIndex;
+        setViews.isChosen = card.isChosen;
     }
     
     //"Solid", @"Striped", @"Outlined"

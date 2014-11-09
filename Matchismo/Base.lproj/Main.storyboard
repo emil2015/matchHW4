@@ -23,6 +23,7 @@
         <!--View Controller-->
         <scene sceneID="l3h-nc-lQU">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lfd-I5-DQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ibw-gP-zem" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Wt-Mo-Kby"/>
@@ -104,7 +105,6 @@
                         <outletCollection property="setCardViews" destination="giE-Sn-gIJ" id="pP5-Jh-dnQ"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lfd-I5-DQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1106" y="-1170"/>
         </scene>
@@ -929,7 +929,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUZ-OZ-PIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-856" y="-517"/>
+            <point key="canvasLocation" x="-1072" y="287"/>
         </scene>
         <!--History View Controller - History-->
         <scene sceneID="yuB-y8-Pv8">
@@ -1033,6 +1033,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="u6E-6n-RNp"/>
+        <segue reference="Cxd-uO-SAE"/>
     </inferredMetricsTieBreakers>
 </document>

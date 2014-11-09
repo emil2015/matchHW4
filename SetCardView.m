@@ -7,17 +7,19 @@
 //
 
 #import "SetCardView.h"
+#import "ViewController.h"
 
 @implementation SetCardView
 
 #pragma mark - Gesture stuff
 
 - (void)tap:(UIGestureRecognizer *)tap{
-    NSLog(@"Tapped was tapped");
-    
+    NSLog(@"Tapped was tapped %d", self.tag);
+    ViewController *meh = self.superview;
+    [meh hereIsTheCard:1];
 }
 
-
+/*
 - (void)viewDidLoad{
     
     //I don't know if this is supposed to be here. 
@@ -34,7 +36,7 @@
     [self addGestureRecognizer:tapRecognizer];
     
 }
-
+*/
 
 
 

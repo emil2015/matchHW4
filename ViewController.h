@@ -12,6 +12,8 @@
 @interface ViewController : MatchCardsViewController
 
 //Something like this
-- (void)tap:(UIGestureRecognizer *)gesture;
+//- (void)tap:(UIGestureRecognizer *)gesture;
+
+- (void)hereIsTheCard:(NSInteger)para;
 
 @end
