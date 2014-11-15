@@ -7,7 +7,7 @@
 //
 
 #import "SetCardView.h"
-#import "ViewController.h"
+
 
 @implementation SetCardView
 
@@ -17,6 +17,10 @@
     NSLog(@"Tapped was tapped %d", self.tag);
     //ViewController *meh = self.superview;
     //[meh hereIsTheCard:1];
+    
+    //self.myViewController use this to call methods in the super view.
+    [self.myViewController viewHasBeenTapped:self];
+    
 }
 
 /*

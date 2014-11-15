@@ -7,16 +7,17 @@
 //
 
 #import "ViewController.h"
-#import "SetCardView.h"
 #import "SetCardDeck.h"
 #import "SetCard.h"
 #import "CardMatchingGame.h"
+#import "Grid.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet SetCardView *singleSolidGreen;
 @property (weak, nonatomic) IBOutlet SetCardView *singleOutlinedPurple;
 @property (weak, nonatomic) IBOutlet SetCardView *tripleStrippedRed;
 @property (weak, nonatomic) IBOutlet SetCardView *dsdd;
+
 
 //@property (strong, nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) CardMatchingGame *game;
@@ -26,6 +27,8 @@
 @end
 
 @implementation ViewController
+
+#pragma mark - "Other things"
 
 @synthesize game = _game;
 -(CardMatchingGame *)game{
@@ -48,6 +51,7 @@
 {
     return @[@"Solid", @"Striped", @"Outlined"];
 }
+
 
 - (void)viewDidLoad
 {
@@ -87,9 +91,27 @@
     
     for (SetCardView *meh in self.setCardViews){
         [meh addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:meh action:@selector(tap:)]];
+        meh.myViewController = self;
     }
     
+    /*
+     @property (nonatomic) CGSize size;                      // overall available space to put grid into
+     @property (nonatomic) CGFloat cellAspectRatio;          // width divided by height (of each cell)
+     @property (nonatomic) NSUInteger minimumNumberOfCells;
+
+     */
     
+    Grid *griddy = [[Grid alloc] init];
+    griddy.size = CGSizeMake(40, 40);
+    
+    
+    
+    
+}
+
+
+- (void)viewHasBeenTapped:(SetCardView *)beenTapped{
+    NSLog(@"This view thingy has been tappyed");
 }
 
 - (void)viewWillAppear:(BOOL)animated

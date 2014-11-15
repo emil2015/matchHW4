@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MatchCardsViewController.h"
+#import "SetCardView.h"
 
 @interface ViewController : MatchCardsViewController
 
@@ -15,5 +16,8 @@
 //- (void)tap:(UIGestureRecognizer *)gesture;
 
 - (void)hereIsTheCard:(NSInteger)para;
+
+
+- (void)viewHasBeenTapped:(SetCardView *)beenTapped;
 
 @end

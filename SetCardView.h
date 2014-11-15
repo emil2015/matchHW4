@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
 
 @interface SetCardView : UIView
 
@@ -23,5 +24,11 @@
 @property NSUInteger cardIndexForView;
 
 @property BOOL isChosen;
+
+//Used to have the parent view pass in itself to this child view
+@property (strong, nonatomic) ViewController *myViewController;
+
+
+
 
 @end
