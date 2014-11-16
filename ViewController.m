@@ -21,11 +21,12 @@
 //@property (strong, nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) CardMatchingGame *game;
 
-@property (strong, nonatomic) IBOutletCollection(SetCardView) NSArray *setCardViews;
+@property (strong, nonatomic) IBOutletCollection(SetCardView) NSMutableArray *setCardViews;
 
 @end
 
 @implementation ViewController
+
 
 @synthesize game = _game;
 -(CardMatchingGame *)game{
@@ -52,50 +53,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    /*
-     //"▲", @"◼︎", @"●"
-    SetCardView *setCard = (SetCardView *) self.singleSolidGreen;
-    setCard.symbol = @"Diamond";
-    setCard.color = [UIColor greenColor];
-    setCard.shade = @"Solid";
-    setCard.count = 1;
-    
-    setCard = (SetCardView *) self.singleOutlinedPurple;
-    setCard.symbol = @"Squiggle";
-    setCard.color = [UIColor purpleColor];
-    setCard.shade = @"outlined";
-    setCard.count = 1;
-    
-    setCard = (SetCardView *) self.tripleStrippedRed;
-    setCard.symbol = @"Oval";
-    setCard.color = [UIColor redColor];
-    setCard.shade = @"Striped";
-    setCard.count = 3;
-    
-    setCard = (SetCardView *) self.dsdd;
-    setCard.symbol = @"Diamond";
-    setCard.color = [UIColor blueColor];
-    setCard.shade = @"Striped";
-    setCard.count = 2;
-    */
-    
-    //[self updateUI];
-    
-    //[self.setCardViews addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self.playingCardView
-      //                                                                                   action:@selector(pinch:)]];
     
     for (SetCardView *meh in self.setCardViews){
-        [meh addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:meh action:@selector(tap:)]];
+        [meh addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:meh action:@selector(tap)]];
     }
     
     
 }
 
+/*
+- (void)tap:(UITapGestureRecognizer *)sender{
+    NSLog(@"Tap that ass");
+    for (SetCardView *meh in self.setCardViews){
+    NSLog(@"Tapped was tapped %d in setCardView", meh.tag);
+    }
+    
+    //
+    NSUInteger cardIndex = [self.setCardViews indexOfObject:sender];
+    NSLog(@"MatchCardViewController - touchCardButton - Card with index %ld has been pressed", (long) cardIndex);
+    [self.game chooseCardAtIndex:cardIndex];
+    [self updateUI];
+    
+    
+}
+ */
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     // this is a 3 card matching game
     [self.game matchThreeCards];
     
@@ -142,7 +127,15 @@
 
 - (void)hereIsTheCard:(NSInteger)para{
     NSLog(@"Here's the card");
+    
+    NSUInteger cardIndex = para; //sender.view.tag; //[self.setCardViews indexOfObject:sender.view.tag];
+    // Supposed to find th card in teh view that will give me the proper index for the card bit it's alwys 6....
+    
+    [self.game chooseCardAtIndex:cardIndex];
+    [self updateUI];
+    NSLog(@"View TOuched");
 }
+
 
 
 
@@ -173,6 +166,25 @@
         setViews.cardIndexForView = cardIndex;
         setViews.tag = cardIndex;
         setViews.isChosen = card.isChosen;
+        setViews.myViewController = self;
+        
+        //Sets background color for being chosen
+        if (setViews.isChosen){
+        setViews.backgroundColor = [UIColor blueColor];
+            
+        } else if (!setViews.isChosen){
+            //setViews.backgroundColor = [UIColor whiteColor];
+            setViews.backgroundColor = [UIColor whiteColor];
+        }
+        
+        //Disables if matched
+        if (card.isMatched){
+            //setViews.Hidden = YES;
+            [setViews removeMe];
+            [self.setCardViews removeObjectAtIndex:cardIndex];
+        }
+        
+        
     }
     
     //"Solid", @"Striped", @"Outlined"

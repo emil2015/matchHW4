@@ -13,18 +13,37 @@
 
 #pragma mark - Gesture stuff
 
-- (void)tap:(UIGestureRecognizer *)tap{
-    NSLog(@"Tapped was tapped %d", self.tag);
+
+- (void)tap{
+    NSLog(@"Tapped was tapped %d in setCardView", self.tag);
     //ViewController *meh = self.superview;
     //[meh hereIsTheCard:1];
+    
+    [self.myViewController hereIsTheCard:self.tag];
+
+}
+
+- (void)removeMe{
+    [self removeFromSuperview];
 }
 
 /*
-- (void)viewDidLoad{
+- (void)IsHidden:(BOOL)isHidden{
+    
+    if (!self.isHidden){
+        self.Hidden = NO;
+    }
+    
+    self.Hidden = isHidden;
+}
+*/
+
+/*
+@property (nonatomic) iewDidLoad{
     
     //I don't know if this is supposed to be here. 
     //[self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)]];
-   NSLog(@"View Did Load for setCardView");
+@property (nonatomic) @"View Did Load for setCardView");
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
                                              initWithTarget:self action:@selector(tap:)];
@@ -115,7 +134,7 @@
 #pragma mark - DrawRect
 
 #define CORNER_FONT_STANDARD_HEIGHT 180.0
-#define CORNER_RADIUS 12.0
+#define CORNER_RADIUS 120.0
 
 - (CGFloat)cornerScaleFactor
 {
@@ -126,6 +145,7 @@
 {
     return CORNER_RADIUS * [self cornerScaleFactor];
 }
+
 
 - (void)drawRect:(CGRect)rect
 {

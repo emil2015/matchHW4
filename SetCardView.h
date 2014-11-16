@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
 
 @interface SetCardView : UIView
 
@@ -23,5 +24,13 @@
 @property NSUInteger cardIndexForView;
 
 @property BOOL isChosen;
+
+- (void)tap;
+
+- (void)removeMe;
+
+@property ViewController *myViewController;
+
+//- (void)IsHidden:(BOOL)isHidden;
 
 @end

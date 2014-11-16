@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="J4T-HA-QWy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="J4T-HA-QWy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -23,7 +23,6 @@
         <!--View Controller-->
         <scene sceneID="l3h-nc-lQU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lfd-I5-DQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ibw-gP-zem" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Wt-Mo-Kby"/>
@@ -55,6 +54,21 @@
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aGw-M7-77J" customClass="SetCardView">
                                 <rect key="frame" x="20" y="228" width="77" height="69"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BR6-sv-qoT" customClass="SetCardView">
+                                <rect key="frame" x="20" y="305" width="77" height="69"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gcu-KG-Fgk" customClass="SetCardView">
+                                <rect key="frame" x="122" y="305" width="77" height="69"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tbr-xU-eRA" customClass="SetCardView">
+                                <rect key="frame" x="223" y="305" width="77" height="69"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -103,8 +117,12 @@
                         <outletCollection property="setCardViews" destination="aGw-M7-77J" id="tsQ-e4-cbl"/>
                         <outletCollection property="setCardViews" destination="08k-Ve-6OA" id="GAD-yK-bPQ"/>
                         <outletCollection property="setCardViews" destination="giE-Sn-gIJ" id="pP5-Jh-dnQ"/>
+                        <outletCollection property="setCardViews" destination="BR6-sv-qoT" id="Vtd-89-lcE"/>
+                        <outletCollection property="setCardViews" destination="Gcu-KG-Fgk" id="cvn-XR-yKa"/>
+                        <outletCollection property="setCardViews" destination="Tbr-xU-eRA" id="v9T-VI-nM7"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lfd-I5-DQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1106" y="-1170"/>
         </scene>
