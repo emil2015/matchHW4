@@ -29,9 +29,9 @@
 
 - (IBAction)add3:(id)sender {
     for (SetCardView *setViews in self.setCardViews){
-        if (setViews.hidden){
+        //if (setViews.hidden){
             setViews.hidden = NO;
-        }
+        //}
     }
     [self updateUI];
 }
@@ -150,7 +150,7 @@
 
 - (void)updateUI
 {
-    //TODO: CARD ARE NIL. NEED TO SEE WHY THAT IS. CHECK THE POSSIBLITY OF IT BEING BECAUSE OF NON INSTANTIATING SOMETHING OR ANOTHER....
+    //TODO: CARD ARE NIL. NEED TO SEE WHY THAT IS. CHECK THE POSSIBLITY OF IT BEING BECAUSE OF NOT INSTANTIATING SOMETHING OR ANOTHER....
     for (SetCardView *setViews in self.setCardViews){
         NSUInteger cardIndex = [self.setCardViews indexOfObject:setViews];
 
@@ -191,20 +191,33 @@
             setViews.backgroundColor = [UIColor whiteColor];
         }
         
-        //Disables if matched
-        if (card.isMatched){
-            setViews.Hidden = YES;
-            //[setViews removeMe];
-            //[self.setCardViews removeObjectAtIndex:cardIndex];
-            //[self.setCardViews removeObject:setViews];
-            //[tempView removeObject:setViews];
-            [self.game removeCardAtIndex:cardIndex];
-        } else if(!card.isMatched){
-            //put card back?
-            setViews.hidden = NO;
-        }
+
         
         
+    }
+    //TODO Need to make it so the cards are removed and stuff properly. At the moment the view once they are hidden do not become unhidden. 
+    NSMutableArray *cardsToBeRemoved = [[NSMutableArray alloc] initWithCapacity:4];
+    
+    for (SetCardView *setViews in self.setCardViews){
+        NSUInteger cardIndex = [self.setCardViews indexOfObject:setViews];
+        Card *card = [self.game cardAtIndex:cardIndex];
+    //Disables if matched
+    if (card.isMatched){
+        setViews.Hidden = YES;
+        //[setViews removeMe];
+        //[self.setCardViews removeObjectAtIndex:cardIndex];
+        //[self.setCardViews removeObject:setViews];
+        //[tempView removeObject:setViews];
+        //[self.game removeCardAtIndex:cardIndex];
+        [cardsToBeRemoved addObject:card];
+    } else if(!card.isMatched){
+        //put card back?
+        //setViews.hidden = NO;
+    }
+    }
+    
+    for (Card *meh in cardsToBeRemoved){
+        [self.game removeCardAtIndex:[self.setCardViews indexOfObject:meh]];
     }
     
     //self.setCardViews = [tempView copy];
@@ -248,5 +261,6 @@
     [self.feedbackLabel setAttributedText:[self.game feedback]];
 */
      }
+
 
 @end
