@@ -179,9 +179,12 @@
         
         //Disables if matched
         if (card.isMatched){
-            //setViews.Hidden = YES;
-            [setViews removeMe];
-            [self.setCardViews removeObjectAtIndex:cardIndex];
+            setViews.Hidden = YES;
+            //[setViews removeMe];
+            //[self.setCardViews removeObjectAtIndex:cardIndex];
+        } else if(!card.isMatched){
+            //put card back?
+            setViews.hidden = NO;
         }
         
         

@@ -62,6 +62,21 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YDF-XI-Eau" customClass="SetCardView">
+                                <rect key="frame" x="20" y="382" width="77" height="69"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FVs-mM-9BT" customClass="SetCardView">
+                                <rect key="frame" x="122" y="382" width="77" height="69"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PwM-sQ-HJa" customClass="SetCardView">
+                                <rect key="frame" x="223" y="382" width="77" height="69"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gcu-KG-Fgk" customClass="SetCardView">
                                 <rect key="frame" x="122" y="305" width="77" height="69"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,18 +123,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZYc-SB-jtW"/>
                     <connections>
-                        <outletCollection property="setCardViews" destination="Tez-sM-qqm" id="f8V-mU-IST"/>
-                        <outletCollection property="setCardViews" destination="ZTn-0J-T5X" id="FF2-nw-xrb"/>
-                        <outletCollection property="setCardViews" destination="G0W-U1-feG" id="fkl-9w-8RC"/>
-                        <outletCollection property="setCardViews" destination="JqJ-fa-L1v" id="98S-AX-4AZ"/>
-                        <outletCollection property="setCardViews" destination="f05-e5-fVI" id="TC7-sZ-HSf"/>
-                        <outletCollection property="setCardViews" destination="wDM-jj-8Dw" id="5dX-ha-Xld"/>
-                        <outletCollection property="setCardViews" destination="aGw-M7-77J" id="tsQ-e4-cbl"/>
-                        <outletCollection property="setCardViews" destination="08k-Ve-6OA" id="GAD-yK-bPQ"/>
-                        <outletCollection property="setCardViews" destination="giE-Sn-gIJ" id="pP5-Jh-dnQ"/>
-                        <outletCollection property="setCardViews" destination="BR6-sv-qoT" id="Vtd-89-lcE"/>
-                        <outletCollection property="setCardViews" destination="Gcu-KG-Fgk" id="cvn-XR-yKa"/>
-                        <outletCollection property="setCardViews" destination="Tbr-xU-eRA" id="v9T-VI-nM7"/>
+                        <outletCollection property="setCardViews" destination="Tez-sM-qqm" collectionClass="NSMutableArray" id="f8V-mU-IST"/>
+                        <outletCollection property="setCardViews" destination="ZTn-0J-T5X" collectionClass="NSMutableArray" id="FF2-nw-xrb"/>
+                        <outletCollection property="setCardViews" destination="G0W-U1-feG" collectionClass="NSMutableArray" id="fkl-9w-8RC"/>
+                        <outletCollection property="setCardViews" destination="JqJ-fa-L1v" collectionClass="NSMutableArray" id="98S-AX-4AZ"/>
+                        <outletCollection property="setCardViews" destination="f05-e5-fVI" collectionClass="NSMutableArray" id="TC7-sZ-HSf"/>
+                        <outletCollection property="setCardViews" destination="wDM-jj-8Dw" collectionClass="NSMutableArray" id="5dX-ha-Xld"/>
+                        <outletCollection property="setCardViews" destination="aGw-M7-77J" collectionClass="NSMutableArray" id="tsQ-e4-cbl"/>
+                        <outletCollection property="setCardViews" destination="08k-Ve-6OA" collectionClass="NSMutableArray" id="GAD-yK-bPQ"/>
+                        <outletCollection property="setCardViews" destination="giE-Sn-gIJ" collectionClass="NSMutableArray" id="pP5-Jh-dnQ"/>
+                        <outletCollection property="setCardViews" destination="BR6-sv-qoT" collectionClass="NSMutableArray" id="Vtd-89-lcE"/>
+                        <outletCollection property="setCardViews" destination="Gcu-KG-Fgk" collectionClass="NSMutableArray" id="cvn-XR-yKa"/>
+                        <outletCollection property="setCardViews" destination="Tbr-xU-eRA" collectionClass="NSMutableArray" id="v9T-VI-nM7"/>
+                        <outletCollection property="setCardViews" destination="YDF-XI-Eau" collectionClass="NSMutableArray" id="OGr-ez-Yik"/>
+                        <outletCollection property="setCardViews" destination="FVs-mM-9BT" collectionClass="NSMutableArray" id="eQf-IN-NbW"/>
+                        <outletCollection property="setCardViews" destination="PwM-sQ-HJa" collectionClass="NSMutableArray" id="rtb-4Q-Kl9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfd-I5-DQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
