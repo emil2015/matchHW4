@@ -29,4 +29,6 @@
 @property (nonatomic, readonly) NSInteger score;
 @property (nonatomic, readonly) NSInteger numberOfCardsToMatch;
 
+- (void)removeCardAtIndex:(NSUInteger)index;
+
 @end

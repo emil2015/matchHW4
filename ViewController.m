@@ -27,11 +27,19 @@
 
 @implementation ViewController
 
+- (IBAction)add3:(id)sender {
+    for (SetCardView *setViews in self.setCardViews){
+        if (setViews.hidden){
+            setViews.hidden = NO;
+        }
+    }
+    [self updateUI];
+}
 
 @synthesize game = _game;
 -(CardMatchingGame *)game{
     if (!_game) { NSLog(@"Game nil");
-        _game = [[CardMatchingGame alloc] initWithCardCount:[self.setCardViews count]
+        _game = [[CardMatchingGame alloc] initWithCardCount:81//[self.setCardViews count]
                                                  usingDeck:[self createDeck]];
     }
     return _game;
@@ -134,6 +142,7 @@
     [self.game chooseCardAtIndex:cardIndex];
     [self updateUI];
     NSLog(@"View TOuched");
+    [self updateUI];
 }
 
 
@@ -144,7 +153,12 @@
     //TODO: CARD ARE NIL. NEED TO SEE WHY THAT IS. CHECK THE POSSIBLITY OF IT BEING BECAUSE OF NON INSTANTIATING SOMETHING OR ANOTHER....
     for (SetCardView *setViews in self.setCardViews){
         NSUInteger cardIndex = [self.setCardViews indexOfObject:setViews];
-        
+
+    /*
+    NSMutableArray *tempView = [self.setCardViews copy];
+        for (SetCardView *setViews in tempView){
+            NSUInteger cardIndex = [tempView indexOfObject:setViews];
+      */
         Card *card = [self.game cardAtIndex:cardIndex];
         SetCard *setCard = (SetCard *)card;
         
@@ -182,6 +196,9 @@
             setViews.Hidden = YES;
             //[setViews removeMe];
             //[self.setCardViews removeObjectAtIndex:cardIndex];
+            //[self.setCardViews removeObject:setViews];
+            //[tempView removeObject:setViews];
+            [self.game removeCardAtIndex:cardIndex];
         } else if(!card.isMatched){
             //put card back?
             setViews.hidden = NO;
@@ -189,6 +206,13 @@
         
         
     }
+    
+    //self.setCardViews = [tempView copy];
+    
+
+    
+    
+    
     
     //"Solid", @"Striped", @"Outlined"
     /*

@@ -29,6 +29,10 @@
 //    return _lastMatch;
 //}
 
+- (void)removeCardAtIndex:(NSUInteger)index{
+    [self.cards removeObjectAtIndex:index];
+}
+
 - (NSAttributedString *)newLine
 {
     if (!_newLine) {
