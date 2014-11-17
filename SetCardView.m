@@ -133,8 +133,8 @@
 
 #pragma mark - DrawRect
 
-#define CORNER_FONT_STANDARD_HEIGHT 180.0
-#define CORNER_RADIUS 120.0
+#define CORNER_FONT_STANDARD_HEIGHT 80.0
+#define CORNER_RADIUS 20.0
 
 - (CGFloat)cornerScaleFactor
 {

@@ -13,7 +13,7 @@
 #import "CardMatchingGame.h"
 #import "Grid.h"
 
-@interface ViewController ()
+@interface ViewController () <UIDynamicAnimatorDelegate>
 @property (weak, nonatomic) IBOutlet SetCardView *singleSolidGreen;
 @property (weak, nonatomic) IBOutlet SetCardView *singleOutlinedPurple;
 @property (weak, nonatomic) IBOutlet SetCardView *tripleStrippedRed;
@@ -29,6 +29,8 @@
 //@property (strong, nonatomic) IBOutletCollection(SetCardView) NSMutableArray *setCardViews;
 
 @property (strong, nonatomic) NSMutableArray *setCardViews;
+
+@property int viewStopAmmount;
 
 @end
 
@@ -48,9 +50,14 @@
             setViews.hidden = NO;
         //}
     }*/
-    self.totalNumberOfCards += 3;
-
-    [self updateUI];
+    
+    if (self.viewStopAmmount >= 0){
+        NSLog(@"STAHP");
+        self.totalNumberOfCards += 3;
+        self.viewStopAmmount -= 3;
+        [self updateUI];
+    }
+    
 }
 
 @synthesize game = _game;
@@ -79,6 +86,7 @@
 {
     [super viewDidLoad];
     self.totalNumberOfCards = 12;
+    self.viewStopAmmount = 68;
     [self doGridStuff];
     
     
@@ -103,12 +111,28 @@
     
     //UIView *theView = [[UIView alloc] initWithFrame:[griddy frameOfCellAtRow:5 inColumn:5]];
 
-    for (int x = 0; x < griddy.columnCount-1; x++){
-        for (int y = 0; y < griddy.rowCount-1; y++){
+    //if (self.totalNumberOfCards % 3 == 0){
+    NSLog(@"%d", (int)self.totalNumberOfCards); //  12 21
+    NSLog(@"%d", (int)griddy.columnCount); //       4  5
+    NSLog(@"%d", (int)griddy.rowCount); //          5  6
+    
+    for (int x = 0; x < self.totalNumberOfCards; x ++){
+        [self.setCardViews addObject:[[SetCardView alloc] initWithFrame:
+                                      [griddy frameOfCellAtRow:x / griddy.columnCount
+                                                      inColumn:x % griddy.columnCount
+                                       ]]];
+    }
+    
+    /* Kinda sorta working... not really
+    for (int x = 0; x <= (int)self.totalNumberOfCards/griddy.columnCount; x++){
+        for (int y = 0; y <= (int)self.totalNumberOfCards%griddy.columnCount; y++){
             
             [self.setCardViews addObject:[[SetCardView alloc] initWithFrame:[griddy frameOfCellAtRow:x inColumn:y]]];
         }
     }
+     */
+        
+    //}
     
     /*
      for (int x = 0; x < 12; x++){
@@ -162,8 +186,11 @@
 {
     [super touchDealButton:sender];
     self.totalNumberOfCards = 12;
+    self.viewStopAmmount = 68;
+
     // this is a 3 card matching game
     [self.game matchThreeCards];
+        [self updateUI];
 }
 
 /*
@@ -203,6 +230,29 @@
 }
 
 
+- (void)animateRemovingDrops:(NSArray *)dropsToRemove
+{
+    
+    NSLog(@"Animation thing called");
+    [SetCardView animateWithDuration:1.0
+                     animations:^{
+                         for (SetCardView *drop in dropsToRemove) {
+                             
+                             int x = (arc4random() % (int)(self.gridView.bounds.size.width*5) - (int)self.gridView.bounds.size.width*2);
+                             int y = (int)self.gridView.bounds.size.height;
+                             drop.center = CGPointMake(x,-y);
+                              
+                             drop.center = CGPointMake(self.gridView.bounds.size.width, self.gridView.bounds.size.height);
+                             
+                             //drop.frame = CGRectOffset(drop.frame, 0, 0);
+                         }
+                     }
+                     completion:^(BOOL finished){
+                         [dropsToRemove makeObjectsPerformSelector:@selector(removeFromSuperview)];
+                     }
+     ];
+    
+}
 
 
 - (void)updateUI
@@ -242,11 +292,18 @@
         
         //Sets background color for being chosen
         if (setViews.isChosen){
-        setViews.backgroundColor = [UIColor blueColor];
+            /*
+            CAGradientLayer *gradiant = [CAGradientLayer layer];
+            gradiant.frame = setViews.bounds;
+            gradiant.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor],(id)[[UIColor blackColor] CGColor], nil];
+            [setViews.layer insertSublayer:gradiant above:0];
+            */
+        setViews.backgroundColor = [UIColor redColor];
+            //[setViews.backgroundColor getRed:(CGFloat *)10 green:(CGFloat *)20 blue:(CGFloat *)20 alpha:(CGFloat *)1];
             
         } else if (!setViews.isChosen){
             //setViews.backgroundColor = [UIColor whiteColor];
-            setViews.backgroundColor = [UIColor whiteColor];
+            setViews.backgroundColor = [UIColor clearColor];
         }
         
 
@@ -255,6 +312,7 @@
     }
     //TODO Need to make it so the cards are removed and stuff properly. At the moment the view once they are hidden do not become unhidden. 
     NSMutableArray *cardsToBeRemoved = [[NSMutableArray alloc] initWithCapacity:4];
+    NSMutableArray *dropsToRemove = [[NSMutableArray alloc] init];
     
     for (SetCardView *setViews in self.setCardViews){
         NSUInteger cardIndex = [self.setCardViews indexOfObject:setViews];
@@ -262,12 +320,13 @@
         //setViews.hidden = card.isMatched;
         
         if (card.isMatched){
-            [setViews removeFromSuperview];
+            //[setViews removeFromSuperview];
             self.totalNumberOfCards -= 1;
         }
         
         if(card.isMatched){
             [cardsToBeRemoved addObject:card];
+            [dropsToRemove addObject:setViews];
         }
         
         /*
@@ -287,8 +346,9 @@
         */
         
     }
-    
+    [self animateRemovingDrops:dropsToRemove];
     [self.game removeCardsObject:cardsToBeRemoved];
+    
     
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long) self.game.score];
     
