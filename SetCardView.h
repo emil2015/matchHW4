@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
 
 @interface SetCardView : UIView
 
@@ -20,5 +21,17 @@
 + (NSArray *)validColors;
 + (NSUInteger)maxCount;
 
+@property NSUInteger cardIndexForView;
+
+@property BOOL isChosen;
+@property BOOL isMatched;
+
+- (void)tap;
+
+- (void)removeMe;
+
+@property ViewController *myViewController;
+
+//- (void)IsHidden:(BOOL)isHidden;
 
 @end

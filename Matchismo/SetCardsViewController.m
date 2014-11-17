@@ -78,6 +78,7 @@
         Card *card = [self.game cardAtIndex:cardIndex];
         if ([card isKindOfClass:[SetCard class]]) {
             SetCard *setCard = (SetCard *)card;
+            
             NSString *titleString = setCard.contents;
             
             NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:titleString];

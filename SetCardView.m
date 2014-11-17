@@ -7,8 +7,56 @@
 //
 
 #import "SetCardView.h"
+#import "ViewController.h"
 
 @implementation SetCardView
+
+#pragma mark - Gesture stuff
+
+
+- (void)tap{
+    NSLog(@"Tapped was tapped %d in setCardView", self.tag);
+    //ViewController *meh = self.superview;
+    //[meh hereIsTheCard:1];
+    
+    [self.myViewController hereIsTheCard:self.tag];
+
+}
+
+- (void)removeMe{
+    [self removeFromSuperview];
+}
+
+/*
+- (void)IsHidden:(BOOL)isHidden{
+    
+    if (!self.isHidden){
+        self.Hidden = NO;
+    }
+    
+    self.Hidden = isHidden;
+}
+*/
+
+/*
+@property (nonatomic) iewDidLoad{
+    
+    //I don't know if this is supposed to be here. 
+    //[self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)]];
+@property (nonatomic) @"View Did Load for setCardView");
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self action:@selector(tap:)];
+    
+    // Specify that the gesture must be a single tap
+    tapRecognizer.numberOfTapsRequired = 1;
+    
+    // Add the tap gesture recognizer to the view
+    [self addGestureRecognizer:tapRecognizer];
+    
+}
+*/
+
 
 
 #pragma mark - Properties
@@ -39,6 +87,30 @@
 
 #pragma mark - Set Card Methods
 
+
+ + (NSArray *)validSymbols
+ {
+ return @[@"▲", @"◼︎", @"●"];
+ }
+ /*
+ + (NSArray *)validShades
+ {
+      //1 = Solid .1 = Striped 0 = Outlined
+
+ return @[@1.0,@0.1,@0.0];
+ }
+*/
++ (NSArray *)validShades
+{
+    return @[@"Solid", @"Striped", @"Outlined"];
+}
+ 
+ + (NSArray *)validColors
+ {
+ return @[[UIColor greenColor], [UIColor purpleColor], [UIColor redColor]];
+ }
+ 
+/*
 + (NSArray *)validSymbols
 {
     return @[@"Oval", @"Diamond", @"Squiggle"];
@@ -53,7 +125,7 @@
 {
     return @[[UIColor greenColor], [UIColor purpleColor], [UIColor redColor]];
 }
-
+*/
 + (NSUInteger)maxCount
 {
     return 3;
@@ -61,8 +133,8 @@
 
 #pragma mark - DrawRect
 
-#define CORNER_FONT_STANDARD_HEIGHT 180.0
-#define CORNER_RADIUS 12.0
+#define CORNER_FONT_STANDARD_HEIGHT 80.0
+#define CORNER_RADIUS 20.0
 
 - (CGFloat)cornerScaleFactor
 {
@@ -73,6 +145,7 @@
 {
     return CORNER_RADIUS * [self cornerScaleFactor];
 }
+
 
 - (void)drawRect:(CGRect)rect
 {
@@ -91,19 +164,19 @@
     //3 different types of shapes. Diamond, Oval, Squiggle
     
     
-    if ([self.symbol isEqualToString:@"Diamond"]){
-    [self drawDiamond];
+    if ([self.symbol isEqualToString:@"▲"]){
+        [self drawDiamond];
     }
-    else if ([self.symbol isEqualToString:@"Oval"]){
+    else if ([self.symbol isEqualToString:@"●"]){
         [self drawOval];
     }
-    else if ([self.symbol isEqualToString:@"Squiggle"]){
+    else if ([self.symbol isEqualToString:@"◼︎"]){
         [self drawSquiggle];
     }
-     
     
     
-
+    
+    
 }
 
 #pragma mark - Draw Diamond
@@ -154,7 +227,7 @@
     
     // set the color of the diamond
     [self.color setStroke];
-
+    
     if (self.count == 1) {
         // count = 1
         // nothing to add to the drawing
@@ -162,6 +235,19 @@
         // count = 2
         // you need to make another diamond and position
         // the two of them to be centered
+        
+        //Makes a copy of the current one
+        UIBezierPath *rightCopy = [diamond copy];
+        
+        //Moves current one to the left
+        CGAffineTransform leftTransform = {1.0, 0.0, 0.0, 1.0, self.bounds.size.width * 0.15 * -1.0, 0.0};
+        [diamond applyTransform:leftTransform];
+        
+        //Moves copy to the right.
+        CGAffineTransform rightTransform = {1.0, 0.0, 0.0, 1.0, self.bounds.size.width * 0.15, 0.0};
+        [rightCopy applyTransform:rightTransform];
+        [diamond appendPath:rightCopy];
+        
     } else {
         // count = 3
         UIBezierPath *leftDiamond = [diamond copy];
@@ -281,6 +367,20 @@
         // count = 2
         // you need to make another diamond and position
         // the two of them to be centered
+        
+        //Makes a copy of the current one
+        UIBezierPath *rightCopy = [oval copy];
+        
+        //Moves current one to the left
+        CGAffineTransform leftTransform = {1.0, 0.0, 0.0, 1.0, self.bounds.size.width * 0.15 * -1.0, 0.0};
+        [oval applyTransform:leftTransform];
+        
+        //Moves copy to the right.
+        CGAffineTransform rightTransform = {1.0, 0.0, 0.0, 1.0, self.bounds.size.width * 0.15, 0.0};
+        [rightCopy applyTransform:rightTransform];
+        [oval appendPath:rightCopy];
+        
+        
     } else {
         // count = 3
         UIBezierPath *leftDiamond = [oval copy];
@@ -365,9 +465,9 @@
     [Squiggle addCurveToPoint:[self bottomeLeft] controlPoint1:[self bottomOfCurve] controlPoint2:[self bottomeLeft]];
     
     //[Squiggle addLineToPoint:[self topLeft]];
-
+    
     [Squiggle addCurveToPoint:[self topLeft] controlPoint1:[self leftSquiggleBottomPoint] controlPoint2:[self leftSquiggleTopPoint]];
-
+    
     
     // set the color of the diamond
     [self.color setStroke];
@@ -379,6 +479,19 @@
         // count = 2
         // you need to make another diamond and position
         // the two of them to be centered
+        
+        //Makes a copy of the current one
+        UIBezierPath *rightCopy = [Squiggle copy];
+        
+        //Moves current one to the left
+        CGAffineTransform leftTransform = {1.0, 0.0, 0.0, 1.0, self.bounds.size.width * 0.15 * -1.0, 0.0};
+        [Squiggle applyTransform:leftTransform];
+        
+        //Moves copy to the right.
+        CGAffineTransform rightTransform = {1.0, 0.0, 0.0, 1.0, self.bounds.size.width * 0.15, 0.0};
+        [rightCopy applyTransform:rightTransform];
+        [Squiggle appendPath:rightCopy];
+        
     } else {
         // count = 3
         UIBezierPath *leftDiamond = [Squiggle copy];
@@ -444,12 +557,12 @@
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
 
 @end
