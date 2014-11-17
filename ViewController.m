@@ -96,9 +96,18 @@
 }
 
 - (void)doGridStuff{
+    
+    for (SetCardView *meh in self.setCardViews){
+        //add thing for if it's matched to animate the removal of it.
+    }
+    
     for (SetCardView *meh in self.setCardViews){
         [meh removeFromSuperview];
+        //[self animateRemovingDrops:[[NSArray alloc] initWithObjects:meh, nil]];
     }
+    //[self animateRemovingDrops:self.setCardViews];
+    
+    
     [self.setCardViews removeAllObjects];
     //Grid stuff
     Grid *griddy = [[Grid alloc] init];
@@ -260,6 +269,11 @@
 
 - (void)updateUI
 {
+    
+ 
+    
+    
+    
     [self doGridStuff];
     //TODO: CARD ARE NIL. NEED TO SEE WHY THAT IS. CHECK THE POSSIBLITY OF IT BEING BECAUSE OF NOT INSTANTIATING SOMETHING OR ANOTHER....
     for (SetCardView *setViews in self.setCardViews){
@@ -309,48 +323,48 @@
             setViews.backgroundColor = [UIColor clearColor];
         }
         
+        //TODO Need to make it so the cards are removed and stuff properly. At the moment the view once they are hidden do not become unhidden.
+        NSMutableArray *cardsToBeRemoved = [[NSMutableArray alloc] initWithCapacity:4];
+        NSMutableArray *dropsToRemove = [[NSMutableArray alloc] init];
+        
+        for (SetCardView *setViews in self.setCardViews){
+            NSUInteger cardIndex = [self.setCardViews indexOfObject:setViews];
+            Card *card = [self.game cardAtIndex:cardIndex];
+            //setViews.hidden = card.isMatched;
+            
+            if (card.isMatched){
+                //[setViews removeFromSuperview];
+                self.totalNumberOfCards -= 1;
+            }
+            
+            if(card.isMatched){
+                [cardsToBeRemoved addObject:card];
+                [dropsToRemove addObject:setViews];
+            }
+            
+            /*
+             //Disables if matched
+             if (card.isMatched){
+             setViews.Hidden = YES;
+             //[setViews removeMe];
+             //[self.setCardViews removeObjectAtIndex:cardIndex];
+             //[self.setCardViews removeObject:setViews];
+             //[tempView removeObject:setViews];
+             //[self.game removeCardAtIndex:cardIndex];
+             [cardsToBeRemoved addObject:card];
+             } else if(!card.isMatched){
+             //put card back?
+             //setViews.hidden = NO;
+             }
+             */
+            
+        }
+        [self animateRemovingDrops:dropsToRemove];
+        [self.game removeCardsObject:cardsToBeRemoved];
+        
+        
+    }
 
-        
-        
-    }
-    //TODO Need to make it so the cards are removed and stuff properly. At the moment the view once they are hidden do not become unhidden. 
-    NSMutableArray *cardsToBeRemoved = [[NSMutableArray alloc] initWithCapacity:4];
-    NSMutableArray *dropsToRemove = [[NSMutableArray alloc] init];
-    
-    for (SetCardView *setViews in self.setCardViews){
-        NSUInteger cardIndex = [self.setCardViews indexOfObject:setViews];
-        Card *card = [self.game cardAtIndex:cardIndex];
-        //setViews.hidden = card.isMatched;
-        
-        if (card.isMatched){
-            //[setViews removeFromSuperview];
-            self.totalNumberOfCards -= 1;
-        }
-        
-        if(card.isMatched){
-            [cardsToBeRemoved addObject:card];
-            [dropsToRemove addObject:setViews];
-        }
-        
-        /*
-    //Disables if matched
-    if (card.isMatched){
-        setViews.Hidden = YES;
-        //[setViews removeMe];
-        //[self.setCardViews removeObjectAtIndex:cardIndex];
-        //[self.setCardViews removeObject:setViews];
-        //[tempView removeObject:setViews];
-        //[self.game removeCardAtIndex:cardIndex];
-        [cardsToBeRemoved addObject:card];
-    } else if(!card.isMatched){
-        //put card back?
-        //setViews.hidden = NO;
-    }
-        */
-        
-    }
-    [self animateRemovingDrops:dropsToRemove];
-    [self.game removeCardsObject:cardsToBeRemoved];
     
     
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long) self.game.score];
