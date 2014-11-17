@@ -11,21 +11,32 @@
 #import "SetCardDeck.h"
 #import "SetCard.h"
 #import "CardMatchingGame.h"
+#import "Grid.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet SetCardView *singleSolidGreen;
 @property (weak, nonatomic) IBOutlet SetCardView *singleOutlinedPurple;
 @property (weak, nonatomic) IBOutlet SetCardView *tripleStrippedRed;
 @property (weak, nonatomic) IBOutlet SetCardView *dsdd;
+@property (strong, nonatomic) IBOutlet UIView *gridView;
 
 //@property (strong, nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) CardMatchingGame *game;
 
-@property (strong, nonatomic) IBOutletCollection(SetCardView) NSMutableArray *setCardViews;
+//@property (strong, nonatomic) IBOutletCollection(SetCardView) NSMutableArray *setCardViews;
+
+@property (strong, nonatomic) NSMutableArray *setCardViews;
 
 @end
 
 @implementation ViewController
+
+- (NSMutableArray *)setCardViews{
+    if (!_setCardViews){
+        _setCardViews = [[NSMutableArray alloc] initWithCapacity:100];
+    }
+    return _setCardViews;
+}
 
 - (IBAction)add3:(id)sender {
     for (SetCardView *setViews in self.setCardViews){
@@ -62,9 +73,43 @@
 {
     [super viewDidLoad];
     
+    //Grid stuff
+    Grid *griddy = [[Grid alloc] init];
+    //griddy.size = [self.mainView bounds].size;
+    griddy.size = [self.gridView bounds].size;//CGSizeMake(150, 150);
+    griddy.cellAspectRatio = 1;
+    griddy.minimumNumberOfCells = 12;
+    
+    griddy.minCellWidth = 4;
+    griddy.minCellHeight = 4;
+    griddy.maxCellHeight = 60;
+    griddy.maxCellWidth = 60;
+    
+    //UIView *theView = [[UIView alloc] initWithFrame:[griddy frameOfCellAtRow:5 inColumn:5]];
+    
+    for (int x = 0; x < 3; x++){
+        for (int y = 0; y < 4; y++){
+            
+            [self.setCardViews addObject:[[SetCardView alloc] initWithFrame:[griddy frameOfCellAtRow:x inColumn:y]]];
+        }
+    }
+    
+    /*
+    for (int x = 0; x < 12; x++){
+        [self.setCardViews addObject:[[SetCardView alloc] initWithFrame:CGRectMake(10, 10, 60, 60)]];
+    }
+    */
     for (SetCardView *meh in self.setCardViews){
         [meh addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:meh action:@selector(tap)]];
     }
+    
+    //[self.gridView addSubview:self.setCardViews.firstObject];
+    
+    for (SetCardView *meh in self.setCardViews){
+        [self.gridView addSubview:meh];
+    }
+    
+    
     
     
 }
