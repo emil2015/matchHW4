@@ -19,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet SetCardView *tripleStrippedRed;
 @property (weak, nonatomic) IBOutlet SetCardView *dsdd;
 @property (strong, nonatomic) IBOutlet UIView *gridView;
+@property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
+
+@property NSUInteger totalNumberOfCards;
 
 //@property (strong, nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) CardMatchingGame *game;
@@ -39,11 +42,14 @@
 }
 
 - (IBAction)add3:(id)sender {
+    /*
     for (SetCardView *setViews in self.setCardViews){
         //if (setViews.hidden){
             setViews.hidden = NO;
         //}
-    }
+    }*/
+    self.totalNumberOfCards += 3;
+
     [self updateUI];
 }
 
@@ -72,33 +78,43 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.totalNumberOfCards = 12;
+    [self doGridStuff];
     
+    
+}
+
+- (void)doGridStuff{
+    for (SetCardView *meh in self.setCardViews){
+        [meh removeFromSuperview];
+    }
+    [self.setCardViews removeAllObjects];
     //Grid stuff
     Grid *griddy = [[Grid alloc] init];
     //griddy.size = [self.mainView bounds].size;
     griddy.size = [self.gridView bounds].size;//CGSizeMake(150, 150);
     griddy.cellAspectRatio = 1;
-    griddy.minimumNumberOfCells = 12;
+    griddy.minimumNumberOfCells = self.totalNumberOfCards;
     
     griddy.minCellWidth = 4;
     griddy.minCellHeight = 4;
-    griddy.maxCellHeight = 60;
-    griddy.maxCellWidth = 60;
+    //griddy.maxCellHeight = 60;
+    //griddy.maxCellWidth = 60;
     
     //UIView *theView = [[UIView alloc] initWithFrame:[griddy frameOfCellAtRow:5 inColumn:5]];
-    
-    for (int x = 0; x < 3; x++){
-        for (int y = 0; y < 4; y++){
+
+    for (int x = 0; x < griddy.columnCount-1; x++){
+        for (int y = 0; y < griddy.rowCount-1; y++){
             
             [self.setCardViews addObject:[[SetCardView alloc] initWithFrame:[griddy frameOfCellAtRow:x inColumn:y]]];
         }
     }
     
     /*
-    for (int x = 0; x < 12; x++){
-        [self.setCardViews addObject:[[SetCardView alloc] initWithFrame:CGRectMake(10, 10, 60, 60)]];
-    }
-    */
+     for (int x = 0; x < 12; x++){
+     [self.setCardViews addObject:[[SetCardView alloc] initWithFrame:CGRectMake(10, 10, 60, 60)]];
+     }
+     */
     for (SetCardView *meh in self.setCardViews){
         [meh addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:meh action:@selector(tap)]];
     }
@@ -108,10 +124,6 @@
     for (SetCardView *meh in self.setCardViews){
         [self.gridView addSubview:meh];
     }
-    
-    
-    
-    
 }
 
 /*
@@ -149,7 +161,7 @@
 - (IBAction)touchDealButton:(id)sender
 {
     [super touchDealButton:sender];
-    
+    self.totalNumberOfCards = 12;
     // this is a 3 card matching game
     [self.game matchThreeCards];
 }
@@ -195,6 +207,7 @@
 
 - (void)updateUI
 {
+    [self doGridStuff];
     //TODO: CARD ARE NIL. NEED TO SEE WHY THAT IS. CHECK THE POSSIBLITY OF IT BEING BECAUSE OF NOT INSTANTIATING SOMETHING OR ANOTHER....
     for (SetCardView *setViews in self.setCardViews){
         NSUInteger cardIndex = [self.setCardViews indexOfObject:setViews];
@@ -246,7 +259,12 @@
     for (SetCardView *setViews in self.setCardViews){
         NSUInteger cardIndex = [self.setCardViews indexOfObject:setViews];
         Card *card = [self.game cardAtIndex:cardIndex];
-        setViews.hidden = card.isMatched;
+        //setViews.hidden = card.isMatched;
+        
+        if (card.isMatched){
+            [setViews removeFromSuperview];
+            self.totalNumberOfCards -= 1;
+        }
         
         if(card.isMatched){
             [cardsToBeRemoved addObject:card];
@@ -272,7 +290,8 @@
     
     [self.game removeCardsObject:cardsToBeRemoved];
     
-
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long) self.game.score];
+    
      }
 
 
