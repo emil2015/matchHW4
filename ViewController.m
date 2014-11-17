@@ -35,6 +35,9 @@
 @end
 
 @implementation ViewController
+- (IBAction)shuffle:(UIButton *)sender {
+    [self doGridStuff];
+}
 
 - (NSMutableArray *)setCardViews{
     if (!_setCardViews){
@@ -60,6 +63,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No More Cards" message:@"There are no more cards in the deck" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
+    [self doGridStuff];
     
 }
 
@@ -108,8 +112,9 @@
      }
      
      }
+     
     
-    
+    //[self animateRemovingDrops:self.setCardViews];
 
     
     /*
@@ -151,11 +156,13 @@
     
     for (SetCardView *meh in self.setCardViews){
         [meh addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:meh action:@selector(tap)]];
-        [self.gridView addSubview:meh];
+        //[self.gridView addSubview:meh];
         
     }
+    [self animatedAddCardsToView:self.setCardViews];
+    [self updateUI];
     
-    //[self animatedAddCardsToView:self.setCardViews];
+
     
     //[self.gridView addSubview:self.setCardViews.firstObject];
     
@@ -198,12 +205,16 @@
 
 - (IBAction)touchDealButton:(id)sender
 {
+    for (SetCardView *meh in self.setCardViews){
+        [self animateRemovingDrops:[[NSArray alloc] initWithObjects:meh, nil]];
+    }
     [super touchDealButton:sender];
     self.totalNumberOfCards = 12;
     self.viewStopAmmount = 68;
 
     // this is a 3 card matching game
     [self.game matchThreeCards];
+    [self doGridStuff];
         [self updateUI];
 }
 
@@ -251,7 +262,7 @@
     [SetCardView animateWithDuration:1.0
                      animations:^{
                          for (SetCardView *drop in dropsToRemove) {
-                             
+                             /*
                              int x = (arc4random() % (int)(self.gridView.bounds.size.width*5) - (int)self.gridView.bounds.size.width*2);
                              int y = (int)self.gridView.bounds.size.height;
                              drop.center = CGPointMake(x,-y);
@@ -259,6 +270,8 @@
                              drop.center = CGPointMake(self.gridView.bounds.size.width, self.gridView.bounds.size.height);
                              
                              //drop.frame = CGRectOffset(drop.frame, 0, 0);
+                              */
+                             drop.center = CGPointZero;
                          }
                      }
                      completion:^(BOOL finished){
@@ -276,7 +289,7 @@
     
     
     
-    [self doGridStuff];
+    //[self doGridStuff];
     //TODO: CARD ARE NIL. NEED TO SEE WHY THAT IS. CHECK THE POSSIBLITY OF IT BEING BECAUSE OF NOT INSTANTIATING SOMETHING OR ANOTHER....
     for (SetCardView *setViews in self.setCardViews){
         NSUInteger cardIndex = [self.setCardViews indexOfObject:setViews];
