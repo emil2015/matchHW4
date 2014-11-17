@@ -48,7 +48,7 @@
     // Do any additional setup after loading the view.
     
     for (PlayingCardView *meh in self.playingCardViews){
-        [meh addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:meh action:@selector(pinch:)]];
+        [meh addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:meh action:@selector(tap)]];
         //[self.gridView addSubview:meh];
         
     }
@@ -72,9 +72,14 @@
     for (PlayingCardView *cardButton in self.playingCardViews) {
         NSUInteger cardIndex = [self.playingCardViews indexOfObject:cardButton];
         Card *card = [self.game cardAtIndex:cardIndex];
+        PlayingCardView *cardView = (PlayingCardView *)card;
+        
+        cardButton.rank = cardView.rank;
+        cardButton.suit = cardView.suit;
+        cardView.tag = cardIndex;
         
         //[cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
-        cardButton.backgroundColor = [UIColor colorWithPatternImage:[self imageForCard:card]];
+        //cardButton.backgroundColor = [UIColor colorWithPatternImage:[self imageForCard:card]];
         //[cardButton setBackgroundImage:[self imageForCard:card] forState:UIControlStateNormal];
         //cardButton.enabled = !card.matched;
     } // end for cardButton

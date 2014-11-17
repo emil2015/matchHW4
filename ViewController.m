@@ -259,7 +259,7 @@
 {
     
     NSLog(@"Animation thing called");
-    [SetCardView animateWithDuration:1.0
+    [SetCardView animateWithDuration:.5
                      animations:^{
                          for (SetCardView *drop in dropsToRemove) {
                              /*
