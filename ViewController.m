@@ -56,6 +56,9 @@
         self.totalNumberOfCards += 3;
         self.viewStopAmmount -= 3;
         [self updateUI];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No More Cards" message:@"There are no more cards in the deck" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
     }
     
 }
