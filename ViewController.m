@@ -97,18 +97,31 @@
 
 - (void)doGridStuff{
     
-    for (SetCardView *meh in self.setCardViews){
-        //add thing for if it's matched to animate the removal of it.
-    }
     
+     for (SetCardView *meh in self.setCardViews){
+     //add thing for if it's matched to animate the removal of it.
+     
+     if (meh.isMatched){
+     [self animateRemovingDrops:[[NSArray alloc] initWithObjects:meh, nil]];
+     }else {
+     [meh removeFromSuperview];
+     }
+     
+     }
+    
+    
+
+    
+    /*
     for (SetCardView *meh in self.setCardViews){
         [meh removeFromSuperview];
         //[self animateRemovingDrops:[[NSArray alloc] initWithObjects:meh, nil]];
-    }
+    }*/
     //[self animateRemovingDrops:self.setCardViews];
     
     
     [self.setCardViews removeAllObjects];
+    
     //Grid stuff
     Grid *griddy = [[Grid alloc] init];
     //griddy.size = [self.mainView bounds].size;
@@ -128,6 +141,7 @@
     NSLog(@"%d", (int)griddy.columnCount); //       4  5
     NSLog(@"%d", (int)griddy.rowCount); //          5  6
     
+    //These 3 loops I am going to try and make into 1.
     for (int x = 0; x < self.totalNumberOfCards; x ++){
         [self.setCardViews addObject:[[SetCardView alloc] initWithFrame:
                                       [griddy frameOfCellAtRow:x / griddy.columnCount
@@ -135,31 +149,19 @@
                                        ]]];
     }
     
-    /* Kinda sorta working... not really
-    for (int x = 0; x <= (int)self.totalNumberOfCards/griddy.columnCount; x++){
-        for (int y = 0; y <= (int)self.totalNumberOfCards%griddy.columnCount; y++){
-            
-            [self.setCardViews addObject:[[SetCardView alloc] initWithFrame:[griddy frameOfCellAtRow:x inColumn:y]]];
-        }
-    }
-     */
-        
-    //}
-    
-    /*
-     for (int x = 0; x < 12; x++){
-     [self.setCardViews addObject:[[SetCardView alloc] initWithFrame:CGRectMake(10, 10, 60, 60)]];
-     }
-     */
     for (SetCardView *meh in self.setCardViews){
         [meh addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:meh action:@selector(tap)]];
+        [self.gridView addSubview:meh];
+        
     }
+    
+    //[self animatedAddCardsToView:self.setCardViews];
     
     //[self.gridView addSubview:self.setCardViews.firstObject];
     
-    for (SetCardView *meh in self.setCardViews){
-        [self.gridView addSubview:meh];
-    }
+    //for (SetCardView *meh in self.setCardViews){
+    //    [self.gridView addSubview:meh];
+   //}
 }
 
 /*
@@ -305,6 +307,7 @@
         setViews.cardIndexForView = cardIndex;
         setViews.tag = cardIndex;
         setViews.isChosen = card.isChosen;
+        setViews.isMatched = card.isMatched;
         setViews.myViewController = self;
         
         //Sets background color for being chosen
@@ -370,6 +373,24 @@
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long) self.game.score];
     
      }
+
+
+- (void)animatedAddCardsToView:(NSArray *)dropsToRemove{
+    [SetCardView animateWithDuration: 1.0
+                     animations:^{
+                         for (SetCardView *drop in dropsToRemove){
+                             CGPoint temp = drop.center; //CGPointMake(10, 20);  //CGPointMake(drop.center.x, drop.center.y);
+                             drop.center = self.gridView.center;//CGPointZero;
+                             [self.gridView addSubview:drop];
+                             drop.center = temp;
+                             
+                         }
+                     }
+                     completion:^(BOOL finished){
+                         //[dropsToRemove makeObjectsPerformSelector:@selector(removeFromSuperview)];
+                     }
+     ];
+}
 
 
 @end

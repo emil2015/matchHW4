@@ -24,6 +24,7 @@
 @property NSUInteger cardIndexForView;
 
 @property BOOL isChosen;
+@property BOOL isMatched;
 
 - (void)tap;
 
