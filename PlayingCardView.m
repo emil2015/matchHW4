@@ -56,6 +56,7 @@
 
 - (void)pinch:(UIPinchGestureRecognizer *)gesture
 {
+    NSLog(@"Pinch was pinched");
     if ((gesture.state == UIGestureRecognizerStateChanged) ||
         (gesture.state == UIGestureRecognizerStateEnded)) {
         self.faceCardScaleFactor *= gesture.scale;

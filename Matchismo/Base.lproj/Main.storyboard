@@ -4,11 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - NewSet-->
         <scene sceneID="o7h-sW-QLb">
             <objects>
                 <navigationController definesPresentationContext="YES" id="WEQ-aQ-5FQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="GWf-cb-NPP"/>
+                    <tabBarItem key="tabBarItem" title="NewSet" id="GWf-cb-NPP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Odn-J8-eKc">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -19,6 +19,232 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYz-X2-0Bh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1576" y="-1165"/>
+        </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="lTa-ka-S3h">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="3b1-fR-GBy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="35u-XG-Q9s"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GKc-z3-Bcq">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mxf-Iq-KuS" kind="relationship" relationship="rootViewController" id="4xv-1a-mrh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S0M-dd-Vif" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1576" y="-1841"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="83O-1h-ecL">
+            <objects>
+                <viewController id="mxf-Iq-KuS" customClass="PCViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1hw-L3-B2H"/>
+                        <viewControllerLayoutGuide type="bottom" id="6bh-yh-cvb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="95R-H3-Qwr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PsB-Jo-y6H">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cB7-bb-7hy" customClass="PlayingCardView">
+                                        <rect key="frame" x="20" y="20" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xbT-yL-ChU" customClass="PlayingCardView">
+                                        <rect key="frame" x="68" y="20" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QaP-zV-8HD" customClass="PlayingCardView">
+                                        <rect key="frame" x="164" y="20" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N1a-S5-ccn" customClass="PlayingCardView">
+                                        <rect key="frame" x="116" y="20" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="htx-I0-txT" customClass="PlayingCardView">
+                                        <rect key="frame" x="212" y="20" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VkF-zF-AVR" customClass="PlayingCardView">
+                                        <rect key="frame" x="260" y="20" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5et-Z4-WgR" customClass="PlayingCardView">
+                                        <rect key="frame" x="20" y="88" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uPm-Px-1QF" customClass="PlayingCardView">
+                                        <rect key="frame" x="68" y="88" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5g-GL-kPS" customClass="PlayingCardView">
+                                        <rect key="frame" x="164" y="88" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g7f-rA-bZv" customClass="PlayingCardView">
+                                        <rect key="frame" x="116" y="88" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qta-cp-Nnu" customClass="PlayingCardView">
+                                        <rect key="frame" x="212" y="88" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7kW-Kc-b3g" customClass="PlayingCardView">
+                                        <rect key="frame" x="260" y="88" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGh-kA-Jpd" customClass="PlayingCardView">
+                                        <rect key="frame" x="20" y="156" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fpV-hr-joM" customClass="PlayingCardView">
+                                        <rect key="frame" x="68" y="156" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6xx-68-gFY" customClass="PlayingCardView">
+                                        <rect key="frame" x="164" y="156" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="unV-0X-NOb" customClass="PlayingCardView">
+                                        <rect key="frame" x="116" y="156" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1vV-rd-Hph" customClass="PlayingCardView">
+                                        <rect key="frame" x="212" y="156" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ih-Fs-Bpm" customClass="PlayingCardView">
+                                        <rect key="frame" x="260" y="156" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGJ-PW-8o4" customClass="PlayingCardView">
+                                        <rect key="frame" x="20" y="224" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X7U-z6-XCz" customClass="PlayingCardView">
+                                        <rect key="frame" x="68" y="224" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d3e-cY-A5X" customClass="PlayingCardView">
+                                        <rect key="frame" x="164" y="224" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q2k-hd-kXu" customClass="PlayingCardView">
+                                        <rect key="frame" x="116" y="224" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fwe-sL-lqq" customClass="PlayingCardView">
+                                        <rect key="frame" x="212" y="224" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VgR-7m-aXm" customClass="PlayingCardView">
+                                        <rect key="frame" x="260" y="224" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RID-r5-Ai5" customClass="PlayingCardView">
+                                        <rect key="frame" x="20" y="292" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h2S-Uo-0UP" customClass="PlayingCardView">
+                                        <rect key="frame" x="68" y="292" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZMj-9S-goh" customClass="PlayingCardView">
+                                        <rect key="frame" x="164" y="292" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IjR-am-EZo" customClass="PlayingCardView">
+                                        <rect key="frame" x="116" y="292" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="deT-6w-xSH" customClass="PlayingCardView">
+                                        <rect key="frame" x="212" y="292" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5xD-KA-Qw2" customClass="PlayingCardView">
+                                        <rect key="frame" x="260" y="292" width="40" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NEa-yE-KML"/>
+                    <connections>
+                        <outletCollection property="playingCardViews" destination="cB7-bb-7hy" id="cuI-Vb-RsR"/>
+                        <outletCollection property="playingCardViews" destination="xbT-yL-ChU" id="eBq-Ki-mrK"/>
+                        <outletCollection property="playingCardViews" destination="N1a-S5-ccn" id="FPK-Lr-vJ1"/>
+                        <outletCollection property="playingCardViews" destination="QaP-zV-8HD" id="1aV-dT-pyy"/>
+                        <outletCollection property="playingCardViews" destination="htx-I0-txT" id="Vr5-cA-r9Q"/>
+                        <outletCollection property="playingCardViews" destination="VkF-zF-AVR" id="RJu-Ta-6Bd"/>
+                        <outletCollection property="playingCardViews" destination="5et-Z4-WgR" id="2RC-5J-uPb"/>
+                        <outletCollection property="playingCardViews" destination="uPm-Px-1QF" id="m9h-JU-f85"/>
+                        <outletCollection property="playingCardViews" destination="g7f-rA-bZv" id="jHY-dV-dCt"/>
+                        <outletCollection property="playingCardViews" destination="f5g-GL-kPS" id="Nzf-Wo-60V"/>
+                        <outletCollection property="playingCardViews" destination="Qta-cp-Nnu" id="zQ3-Bt-SEI"/>
+                        <outletCollection property="playingCardViews" destination="7kW-Kc-b3g" id="Rxp-Qx-Flh"/>
+                        <outletCollection property="playingCardViews" destination="PGh-kA-Jpd" id="zvi-NA-nFe"/>
+                        <outletCollection property="playingCardViews" destination="fpV-hr-joM" id="C97-ih-rrC"/>
+                        <outletCollection property="playingCardViews" destination="unV-0X-NOb" id="uge-lk-oIh"/>
+                        <outletCollection property="playingCardViews" destination="6xx-68-gFY" id="zEw-hq-O3i"/>
+                        <outletCollection property="playingCardViews" destination="1vV-rd-Hph" id="KdV-14-BcR"/>
+                        <outletCollection property="playingCardViews" destination="3ih-Fs-Bpm" id="iFk-Jv-YRo"/>
+                        <outletCollection property="playingCardViews" destination="PGJ-PW-8o4" id="EU8-Fa-Ard"/>
+                        <outletCollection property="playingCardViews" destination="X7U-z6-XCz" id="ipu-cZ-odR"/>
+                        <outletCollection property="playingCardViews" destination="q2k-hd-kXu" id="ei4-HY-ioV"/>
+                        <outletCollection property="playingCardViews" destination="d3e-cY-A5X" id="vuz-Zp-gyY"/>
+                        <outletCollection property="playingCardViews" destination="Fwe-sL-lqq" id="vsy-5c-uS4"/>
+                        <outletCollection property="playingCardViews" destination="VgR-7m-aXm" id="PtY-OR-lcT"/>
+                        <outletCollection property="playingCardViews" destination="RID-r5-Ai5" id="uOI-p9-ksZ"/>
+                        <outletCollection property="playingCardViews" destination="h2S-Uo-0UP" id="1BN-4h-6TE"/>
+                        <outletCollection property="playingCardViews" destination="IjR-am-EZo" id="0Oo-ss-KNX"/>
+                        <outletCollection property="playingCardViews" destination="ZMj-9S-goh" id="ZjW-iB-fGM"/>
+                        <outletCollection property="playingCardViews" destination="deT-6w-xSH" id="pWp-zH-Ct4"/>
+                        <outletCollection property="playingCardViews" destination="5xD-KA-Qw2" id="wnf-aT-gSc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jT7-Gx-2q0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1121" y="-1841"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="l3h-nc-lQU">
@@ -963,6 +1189,7 @@
                         <segue destination="upZ-Ae-Uuf" kind="relationship" relationship="viewControllers" id="Ule-Ey-fiY"/>
                         <segue destination="Eji-xX-5pI" kind="relationship" relationship="viewControllers" id="HIO-p2-44r"/>
                         <segue destination="WEQ-aQ-5FQ" kind="relationship" relationship="viewControllers" id="YL6-Am-nbf"/>
+                        <segue destination="3b1-fR-GBy" kind="relationship" relationship="viewControllers" id="IGt-Lm-s8N"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jKq-bY-IIZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1020,6 +1247,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Cxd-uO-SAE"/>
+        <segue reference="u6E-6n-RNp"/>
     </inferredMetricsTieBreakers>
 </document>
