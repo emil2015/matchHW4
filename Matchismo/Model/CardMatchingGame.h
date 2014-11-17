@@ -31,4 +31,6 @@
 
 - (void)removeCardAtIndex:(NSUInteger)index;
 
+- (void)removeCardsObject:(NSArray*)object;
+
 @end

@@ -33,6 +33,10 @@
     [self.cards removeObjectAtIndex:index];
 }
 
+- (void)removeCardsObject:(NSArray*)object{
+    [self.cards removeObjectsInArray:object];
+}
+
 - (NSAttributedString *)newLine
 {
     if (!_newLine) {

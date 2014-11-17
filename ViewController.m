@@ -201,6 +201,13 @@
     for (SetCardView *setViews in self.setCardViews){
         NSUInteger cardIndex = [self.setCardViews indexOfObject:setViews];
         Card *card = [self.game cardAtIndex:cardIndex];
+        setViews.hidden = card.isMatched;
+        
+        if(card.isMatched){
+            [cardsToBeRemoved addObject:card];
+        }
+        
+        /*
     //Disables if matched
     if (card.isMatched){
         setViews.Hidden = YES;
@@ -214,52 +221,13 @@
         //put card back?
         //setViews.hidden = NO;
     }
+        */
+        
     }
     
-    for (Card *meh in cardsToBeRemoved){
-        [self.game removeCardAtIndex:[self.setCardViews indexOfObject:meh]];
-    }
-    
-    //self.setCardViews = [tempView copy];
+    [self.game removeCardsObject:cardsToBeRemoved];
     
 
-    
-    
-    
-    
-    //"Solid", @"Striped", @"Outlined"
-    /*
-    for (UIButton *cardButton in self.cardButtons) {
-        NSUInteger cardIndex = [self.cardButtons indexOfObject:cardButton];
-        Card *card = [self.game cardAtIndex:cardIndex];
-        if ([card isKindOfClass:[SetCard class]]) {
-     
-            SetCard *setCard = (SetCard *)card;
-            NSString *titleString = setCard.contents;
-            
-            NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:titleString];
-            
-            UIColor *foregroundColor = [setCard color];
-            UIColor *strokeColor = [foregroundColor copy];
-            foregroundColor = [foregroundColor colorWithAlphaComponent:setCard.shade];
-            
-            [title setAttributes:@{NSForegroundColorAttributeName:foregroundColor,
-                                   NSStrokeWidthAttributeName:@-5,
-                                   NSStrokeColorAttributeName:strokeColor}
-                           range:NSMakeRange(0, [title length])];
-            [cardButton setAttributedTitle:title forState:UIControlStateNormal];
-            cardButton.enabled = !card.matched;
-            if (setCard.isChosen && !setCard.isMatched) {
-                [cardButton setBackgroundImage:[UIImage imageNamed:@"selectedCardFront"] forState:UIControlStateNormal];
-            } else {
-                [cardButton setBackgroundImage:[UIImage imageNamed:@"cardFront"] forState:UIControlStateNormal];
-            }
-        }
-    }
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long) self.game.score];
-    //    self.feedbackLabel.text = [NSString stringWithFormat:@"%@", [self.game feedback]];
-    [self.feedbackLabel setAttributedText:[self.game feedback]];
-*/
      }
 
 
