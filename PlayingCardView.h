@@ -21,4 +21,14 @@
 
 @property PCViewController *myViewController;
 
+//
+
+
+
+@property NSUInteger cardIndexForView;
+
+@property BOOL isChosen;
+@property BOOL isMatched;
+
+
 @end

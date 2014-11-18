@@ -15,8 +15,37 @@
 @implementation PlayingCardView
 
 - (void)tap{
-    
+    //self.faceUp = !self.faceUp;
     [self.myViewController hereIsTheCard:self.tag];
+}
+
+- (void)animatedAddCardsToFlip:(NSArray *)dropsToFlip{
+    
+    [PlayingCardView transitionWithView:self
+                               duration:.2
+                                options:UIViewAnimationOptionTransitionFlipFromLeft
+                             animations:^{
+                                 for (PlayingCardView *drop in dropsToFlip){
+                                     //[drop.backView removeFromSuperView];
+                                     //[self addSubview:drop.frontView];
+                                 }
+                             }
+                             completion:NULL
+     ];
+    
+    
+    /*
+    [PlayingCardView animateWithDuration: 1.0
+                          animations:^{
+                              for (PlayingCardView *drop in dropsToFlip){
+                                  
+                                  
+                              }
+                          }
+                          completion:^(BOOL finished){
+                              //[dropsToRemove makeObjectsPerformSelector:@selector(removeFromSuperview)];
+                          }
+     ];*/
 }
 
 #pragma mark - Properties
