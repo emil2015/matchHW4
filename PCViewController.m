@@ -352,7 +352,7 @@
              gradiant.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor],(id)[[UIColor blackColor] CGColor], nil];
              [setViews.layer insertSublayer:gradiant above:0];
              */
-            setViews.backgroundColor = [UIColor redColor];
+            //setViews.backgroundColor = [UIColor redColor];
             //[setViews.backgroundColor getRed:(CGFloat *)10 green:(CGFloat *)20 blue:(CGFloat *)20 alpha:(CGFloat *)1];
             
         } else if (!setViews.isChosen){
