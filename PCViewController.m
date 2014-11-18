@@ -145,7 +145,7 @@
     Grid *griddy = [[Grid alloc] init];
     //griddy.size = [self.mainView bounds].size;
     griddy.size = [self.gridView bounds].size;//CGSizeMake(150, 150);
-    griddy.cellAspectRatio = .75;
+    griddy.cellAspectRatio = .7;
     griddy.minimumNumberOfCells = self.totalNumberOfCards;
     
     griddy.minCellWidth = 4;
