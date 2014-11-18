@@ -14,6 +14,11 @@
 
 @implementation PlayingCardView
 
+- (void)tap{
+    
+    [self.myViewController hereIsTheCard:self.tag];
+}
+
 #pragma mark - Properties
 
 @synthesize faceCardScaleFactor = _faceCardScaleFactor;

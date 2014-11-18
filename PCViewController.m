@@ -72,9 +72,15 @@
     for (PlayingCardView *cardButton in self.playingCardViews) {
         NSUInteger cardIndex = [self.playingCardViews indexOfObject:cardButton];
         Card *card = [self.game cardAtIndex:cardIndex];
+        PlayingCard *cardView = (PlayingCard *)card;
+        cardButton.rank = cardView.rank;
+        cardButton.suit = cardView.suit;
+        cardButton.faceUp = YES;
+        cardButton.tag = cardIndex;
+        
         
         //[cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
-        cardButton.backgroundColor = [UIColor colorWithPatternImage:[self imageForCard:card]];
+        //cardButton.backgroundColor = [UIColor colorWithPatternImage:[self imageForCard:card]];
         //[cardButton setBackgroundImage:[self imageForCard:card] forState:UIControlStateNormal];
         //cardButton.enabled = !card.matched;
     } // end for cardButton

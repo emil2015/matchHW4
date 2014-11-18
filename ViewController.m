@@ -35,8 +35,10 @@
 @end
 
 @implementation ViewController
+
 - (IBAction)shuffle:(UIButton *)sender {
     [self doGridStuff];
+    [self updateUI];
 }
 
 - (NSMutableArray *)setCardViews{
@@ -64,6 +66,7 @@
         [alert show];
     }
     [self doGridStuff];
+    [self updateUI];
     
 }
 
@@ -95,13 +98,13 @@
     self.totalNumberOfCards = 12;
     self.viewStopAmmount = 68;
     [self doGridStuff];
-    
+    [self updateUI];
     
 }
 
 - (void)doGridStuff{
     
-    
+    /*
      for (SetCardView *meh in self.setCardViews){
      //add thing for if it's matched to animate the removal of it.
      
@@ -111,8 +114,22 @@
      [meh removeFromSuperview];
      }
      
-     }
-     
+     }*/
+    
+    NSMutableArray *cardsToAnimate = [[NSMutableArray alloc] init];
+    //NSMutableArray *cardsToRemove = [[NSMutableArray alloc] init];
+    
+    for (SetCardView *meh in self.setCardViews){
+        if (meh.isMatched){
+            [cardsToAnimate addObject:meh];
+        } else {
+            //[cardsToRemove addObject:meh];
+            [meh removeFromSuperview];
+        }
+    }
+    
+    [self animateRemovingDrops:cardsToAnimate];
+    
     
     //[self animateRemovingDrops:self.setCardViews];
 
@@ -160,7 +177,7 @@
         
     }
     [self animatedAddCardsToView:self.setCardViews];
-    [self updateUI];
+    //[self updateUI];
     
 
     
@@ -205,17 +222,21 @@
 
 - (IBAction)touchDealButton:(id)sender
 {
+    
     for (SetCardView *meh in self.setCardViews){
         [self animateRemovingDrops:[[NSArray alloc] initWithObjects:meh, nil]];
     }
+    //[self animateRemovingDrops:self.setCardViews];
+    
     [super touchDealButton:sender];
     self.totalNumberOfCards = 12;
     self.viewStopAmmount = 68;
 
     // this is a 3 card matching game
     [self.game matchThreeCards];
+    
     [self doGridStuff];
-        [self updateUI];
+    [self updateUI];
 }
 
 /*
@@ -249,6 +270,9 @@
     // Supposed to find th card in teh view that will give me the proper index for the card bit it's alwys 6....
     
     [self.game chooseCardAtIndex:cardIndex];
+    
+
+    
     [self updateUI];
     NSLog(@"View TOuched");
     [self updateUI];
@@ -275,19 +299,19 @@
                          }
                      }
                      completion:^(BOOL finished){
+                         if (finished){
                          [dropsToRemove makeObjectsPerformSelector:@selector(removeFromSuperview)];
+                         }
                      }
      ];
+
     
 }
 
 
 - (void)updateUI
 {
-    
- 
-    
-    
+    BOOL temp = NO;
     
     //[self doGridStuff];
     //TODO: CARD ARE NIL. NEED TO SEE WHY THAT IS. CHECK THE POSSIBLITY OF IT BEING BECAUSE OF NOT INSTANTIATING SOMETHING OR ANOTHER....
@@ -351,6 +375,7 @@
             if (card.isMatched){
                 //[setViews removeFromSuperview];
                 self.totalNumberOfCards -= 1;
+                temp = YES;
             }
             
             if(card.isMatched){
@@ -358,25 +383,21 @@
                 [dropsToRemove addObject:setViews];
             }
             
-            /*
-             //Disables if matched
-             if (card.isMatched){
-             setViews.Hidden = YES;
-             //[setViews removeMe];
-             //[self.setCardViews removeObjectAtIndex:cardIndex];
-             //[self.setCardViews removeObject:setViews];
-             //[tempView removeObject:setViews];
-             //[self.game removeCardAtIndex:cardIndex];
-             [cardsToBeRemoved addObject:card];
-             } else if(!card.isMatched){
-             //put card back?
-             //setViews.hidden = NO;
-             }
-             */
+        }
+        
+        if ([dropsToRemove count] != 0){
+        [self animateRemovingDrops:dropsToRemove];
+        }
+        
+        [self.game removeCardsObject:cardsToBeRemoved];
+        //Have to make it wait until animations are finished.
+
+        
+        if (temp){
+            [self doGridStuff];
+            break;
             
         }
-        [self animateRemovingDrops:dropsToRemove];
-        [self.game removeCardsObject:cardsToBeRemoved];
         
         
     }
@@ -387,6 +408,9 @@
     
      }
 
+- (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator{
+    [self doGridStuff];
+}
 
 - (void)animatedAddCardsToView:(NSArray *)dropsToRemove{
     [SetCardView animateWithDuration: 1.0
