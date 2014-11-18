@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PCViewController.h"
 
 @interface PlayingCardView : UIView
 
@@ -15,5 +16,20 @@
 @property (nonatomic) BOOL faceUp;
 
 - (void)pinch:(UIPinchGestureRecognizer *)gesture;
+
+- (void)tap;
+
+@property PCViewController *myViewController;
+
+//
+
+
+
+@property NSUInteger cardIndexForView;
+
+@property BOOL isChosen;
+@property BOOL isMatched;
+@property BOOL touched;
+
 
 @end
