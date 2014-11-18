@@ -44,6 +44,10 @@
     }
     return _PlayingCardViews;
 }
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [self doGridStuff];
+    [self updateUI];
+}
 
 - (IBAction)add3:(id)sender {
     /*

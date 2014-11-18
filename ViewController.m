@@ -41,6 +41,11 @@
     [self updateUI];
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [self doGridStuff];
+    [self updateUI];
+}
+
 - (NSMutableArray *)setCardViews{
     if (!_setCardViews){
         _setCardViews = [[NSMutableArray alloc] initWithCapacity:100];
