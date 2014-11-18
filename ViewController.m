@@ -41,6 +41,16 @@
     [self updateUI];
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [self doGridStuff];
+    [self updateUI];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self doGridStuff];
+    [self updateUI];
+}
+
 - (NSMutableArray *)setCardViews{
     if (!_setCardViews){
         _setCardViews = [[NSMutableArray alloc] initWithCapacity:100];
@@ -97,6 +107,7 @@
     [super viewDidLoad];
     self.totalNumberOfCards = 12;
     self.viewStopAmmount = 66;
+
     [self doGridStuff];
     [self updateUI];
     

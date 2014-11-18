@@ -44,6 +44,15 @@
     }
     return _PlayingCardViews;
 }
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [self doGridStuff];
+    [self updateUI];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self doGridStuff];
+    [self updateUI];
+}
 
 - (IBAction)add3:(id)sender {
     /*
@@ -94,10 +103,14 @@
     [super viewDidLoad];
     self.totalNumberOfCards = 31;
     self.viewStopAmmount = 20;
+
     [self doGridStuff];
     [self updateUI];
     
 }
+
+
+
 
 - (void)doGridStuff{
     
@@ -217,7 +230,7 @@
     [super viewWillAppear:animated];
     // this is a 3 card matching game
     [self.game matchThreeCards];
-    
+
     [self updateUI];
 }
 
