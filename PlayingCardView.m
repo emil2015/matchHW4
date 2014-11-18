@@ -16,6 +16,7 @@
 
 - (void)tap{
     //self.faceUp = !self.faceUp;
+    self.touched = YES;
     [self.myViewController hereIsTheCard:self.tag];
 }
 
@@ -138,40 +139,99 @@
     
     // stroke the outer edge of the rounded rectangle
     [roundedRect stroke];
-
+    
+    /*
+    [PlayingCardView transitionWithView:self
+                               duration:.2
+                                options:UIViewAnimationOptionTransitionFlipFromLeft
+                             animations:^{
+                             }
+                             completion:NULL
+     ];
+     */
     // is the card face up?
     if (self.faceUp) {
+
         // yes it is face up.
         // look for an image for the card, this will work for J, Q, K only
         NSString *imageName = [NSString stringWithFormat:@"%@%@", [self rankAsString], self.suit];
         NSLog(@"Looking for image with name %@", imageName);
         UIImage *faceImage = [UIImage imageNamed:imageName];
         
+
         // did we find an image?
         if (faceImage) {
             // yes we found an image, so it must be a J, Q or K
             // define the space in which the image will be drawn
+            if (self.touched) {
+            [PlayingCardView transitionWithView:self
+                                       duration:.2
+                                        options:UIViewAnimationOptionTransitionFlipFromLeft
+                                     animations:^{
+                                         
             CGRect imageRect = CGRectInset(self.bounds,
                                            self.bounds.size.width * (1.0 - self.faceCardScaleFactor),
                                            self.bounds.size.height * (1.0 - self.faceCardScaleFactor));
             
             // draw the image in the space we made for it
             [faceImage drawInRect:imageRect];
+                                     }
+                                     completion:NULL
+             ];
+            } else {
+                CGRect imageRect = CGRectInset(self.bounds,
+                                               self.bounds.size.width * (1.0 - self.faceCardScaleFactor),
+                                               self.bounds.size.height * (1.0 - self.faceCardScaleFactor));
+                
+                // draw the image in the space we made for it
+                [faceImage drawInRect:imageRect];
+
+            }
         } else {
+            if (self.touched){
+            [PlayingCardView transitionWithView:self
+                                       duration:.2
+                                        options:UIViewAnimationOptionTransitionFlipFromLeft
+                                     animations:^{
             // No we did not find an image, it must be a numbered card
             NSLog(@"Did not find the image with name %@", imageName);
             
             // draw the pips for the numbered card
             [self drawPips];
+                                     }
+                                     completion:NULL
+             ];
+            }else {
+                // No we did not find an image, it must be a numbered card
+                NSLog(@"Did not find the image with name %@", imageName);
+                
+                // draw the pips for the numbered card
+                [self drawPips];
+            }
+        
         }
         
         // draw the card rank and suit in upper left corner and lower right corner
         [self drawCorners];
     } else {
         // no the card is not face up. Set the image to be the card back
+        if (!self.touched){
         [[UIImage imageNamed:@"cardBack"] drawInRect:self.bounds];
-    }
+        } else {
+            [PlayingCardView transitionWithView:self
+                                       duration:.2
+                                        options:UIViewAnimationOptionTransitionFlipFromLeft
+                                     animations:^{
+                                            [[UIImage imageNamed:@"cardBack"] drawInRect:self.bounds];
+                                     }
+                                     completion:NULL
+             ];
+        
+        }
     
+    }
+                                 
+    self.touched = NO;
 }
 
 - (NSString *)rankAsString

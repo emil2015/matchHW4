@@ -29,6 +29,7 @@
 
 @property BOOL isChosen;
 @property BOOL isMatched;
+@property BOOL touched;
 
 
 @end
