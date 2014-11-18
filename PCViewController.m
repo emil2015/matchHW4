@@ -92,8 +92,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.totalNumberOfCards = 30;
-    self.viewStopAmmount = 19;
+    self.totalNumberOfCards = 31;
+    self.viewStopAmmount = 20;
     [self doGridStuff];
     [self updateUI];
     
@@ -236,8 +236,8 @@
     //[self animateRemovingDrops:self.PlayingCardViews];
     
     [super touchDealButton:sender];
-    self.totalNumberOfCards = 30;
-    self.viewStopAmmount = 19;
+    self.totalNumberOfCards = 31;
+    self.viewStopAmmount = 21;
     
     // this is a 3 card matching game
     [self.game matchThreeCards];
