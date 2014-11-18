@@ -135,7 +135,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDY-TN-Z8G">
-                                <rect key="frame" x="0.0" y="103" width="320" height="397"/>
+                                <rect key="frame" x="0.0" y="103" width="320" height="417"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -149,13 +149,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ZDY-TN-Z8G" firstAttribute="top" secondItem="HwR-03-UyO" secondAttribute="top" constant="103" id="5f1-nj-9vv"/>
-                            <constraint firstItem="0tn-oz-G8b" firstAttribute="top" secondItem="ZDY-TN-Z8G" secondAttribute="bottom" constant="19" id="Ovx-si-Ms3"/>
-                            <constraint firstItem="9ff-0N-pxK" firstAttribute="centerX" secondItem="ZDY-TN-Z8G" secondAttribute="centerX" id="WNP-NM-O1g"/>
+                            <constraint firstItem="ZDY-TN-Z8G" firstAttribute="leading" secondItem="HwR-03-UyO" secondAttribute="leading" id="9Lv-fo-na5"/>
+                            <constraint firstItem="ZDY-TN-Z8G" firstAttribute="top" secondItem="HwR-03-UyO" secondAttribute="top" constant="103" id="GqT-gK-NFD"/>
+                            <constraint firstAttribute="bottom" secondItem="ZDY-TN-Z8G" secondAttribute="bottom" constant="48" id="HSR-8K-cLE"/>
+                            <constraint firstItem="ZDY-TN-Z8G" firstAttribute="centerX" secondItem="9ff-0N-pxK" secondAttribute="centerX" id="Kmj-zu-RMK"/>
                             <constraint firstItem="9ff-0N-pxK" firstAttribute="leading" secondItem="HwR-03-UyO" secondAttribute="leading" constant="67" id="c8y-Cb-zWo"/>
-                            <constraint firstAttribute="trailing" secondItem="ZDY-TN-Z8G" secondAttribute="trailing" id="cpq-l3-HZm"/>
-                            <constraint firstItem="ZDY-TN-Z8G" firstAttribute="leading" secondItem="HwR-03-UyO" secondAttribute="leading" id="ljJ-fN-KuM"/>
-                            <constraint firstItem="ZDY-TN-Z8G" firstAttribute="top" secondItem="9ff-0N-pxK" secondAttribute="bottom" constant="8" symbolic="YES" id="tRj-vq-s68"/>
+                            <constraint firstItem="ZDY-TN-Z8G" firstAttribute="top" secondItem="9ff-0N-pxK" secondAttribute="bottom" constant="8" symbolic="YES" id="jb4-ms-SoC"/>
+                            <constraint firstAttribute="trailing" secondItem="ZDY-TN-Z8G" secondAttribute="trailing" id="vMw-Zq-gNS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZYc-SB-jtW">
